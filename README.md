@@ -12,6 +12,7 @@ Built to run comfortably on modest hardware (8 GB RAM, dual-core CPU) by streami
 
 ## Features
 
+- **Org-focused and general-purpose**: scrapes any GitHub organization via `--org <name>`, with no user-specific setup
 - **Polite, resilient scraping**
   - RFC 5988 pagination
   - Handles HTTP 429 and secondary rate limits (HTTP 403), including `Retry-After` parsing
