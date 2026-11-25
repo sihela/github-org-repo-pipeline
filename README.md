@@ -192,7 +192,7 @@ The suite uses mocked network layers, so it runs offline and never hits the GitH
 - Support for user accounts, not just organizations
 - Authenticated requests for higher API rate limits
 - Additional output formats (e.g. Parquet, SQLite)
-- A `repo-clean` console command and publishing to PyPI
+- Publishing to PyPI
 
 ---
 
