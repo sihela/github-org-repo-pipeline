@@ -1,10 +1,10 @@
-# GitHub Repo Data Pipeline
+# GitHub Org Repo Data Pipeline
 
 [![CI](https://github.com/sihela/github-org-repo-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/sihela/github-org-repo-pipeline/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-A resilient, low-memory data pipeline that **scrapes** repository metadata from the GitHub REST API, **validates** it with a configurable standalone engine, and **cleans** it based on the validator's machine-readable report.
+A resilient, low-memory data pipeline that **scrapes** the public repository metadata of any GitHub organization (e.g. `microsoft`) from the GitHub REST API, **validates** it with a configurable standalone engine, and **cleans** it based on the validator's machine-readable report.
 
 Built to run comfortably on modest hardware (8 GB RAM, dual-core CPU) by streaming data to disk instead of holding it in memory.
 
@@ -66,7 +66,7 @@ flowchart TD
 ## Project structure
 
 ```
-github-repo-data-pipeline/
+github-org-repo-pipeline/
 ├── src/repo_pipeline/
 │   ├── __init__.py
 │   ├── github_client.py
@@ -125,7 +125,7 @@ playwright install chromium
 
 ## Usage
 
-> **Tip:** after installing, `repo-scrape` and `repo-validate` are available as shortcuts for `python -m repo_pipeline.cli.scrape` and `python -m repo_pipeline.cli.validate`.
+> **Tip:** after installing, `repo-scrape`, `repo-validate` and `repo-clean` are available as shortcuts for `python -m repo_pipeline.cli.scrape`, `python -m repo_pipeline.cli.validate` and `python -m repo_pipeline.cleaner`.
 
 ### 1. Scrape an organization's public repositories
 
@@ -184,6 +184,8 @@ The suite uses mocked network layers, so it runs offline and never hits the GitH
 ## Sample output
 
 ![Validation report](docs/images/validation-report.png)
+
+*Validation report generated from the Microsoft organization's repositories.*
 
 ---
 
