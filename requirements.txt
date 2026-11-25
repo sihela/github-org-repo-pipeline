@@ -1,0 +1,11 @@
+# Core dependencies
+requests>=2.31.0
+
+# Optional: For PDF report generation
+# Install with optional extra:
+#   pip install .[pdf]
+# Or install directly:
+#   pip install playwright>=1.40.0
+#
+# After installing Playwright, install the Chromium browser binary:
+#   playwright install chromium

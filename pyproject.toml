@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repo-pipeline"
+version = "0.1.0"
+description = "High-resilience GitHub repository scraping, validation, and cleaning pipeline"
+readme = "README.md"
+authors = [
+    { name = "Sihela Wanasekara (sihelawanasekara@gmail.com)" }
+]
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+pdf = [
+    "playwright>=1.40.0",
+]
+
+[project.scripts]
+repo-scrape = "repo_pipeline.cli.scrape:main"
+repo-validate = "repo_pipeline.cli.validate:main"
+repo-clean = "repo_pipeline.cleaner:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
