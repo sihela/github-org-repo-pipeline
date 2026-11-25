@@ -1,32 +1,29 @@
-name: CI
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
 
-on:
-  push:
-    branches: [main]
-  pull_request:
+[project]
+name = "repo-pipeline"
+version = "0.1.0"
+description = "High-resilience GitHub repository scraping, validation, and cleaning pipeline"
+readme = "README.md"
+authors = [
+    { name = "Sihela Wanasekara (sihelawanasekara@gmail.com)" }
+]
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31.0",
+]
 
-jobs:
-  test:
-    runs-on: ubuntu-24.04
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+[project.optional-dependencies]
+pdf = [
+    "playwright>=1.40.0",
+]
 
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v6
+[project.scripts]
+repo-scrape = "repo_pipeline.cli.scrape:main"
+repo-validate = "repo_pipeline.cli.validate:main"
+repo-clean = "repo_pipeline.cleaner:main"
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v6
-        with:
-          python-version: ${{ matrix.python-version }}
-          cache: pip
-
-      - name: Install package
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e .
-
-      - name: Run unit tests
-        run: python -m unittest discover -s tests -v
+[tool.setuptools.packages.find]
+where = ["src"]
